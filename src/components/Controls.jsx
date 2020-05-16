@@ -7,6 +7,7 @@ class Controls extends React.Component {
 
         this.reset = props.reset.bind(this)
         this.solve = props.solve.bind(this)
+        this.getOption = props.getOption.bind(this)
     }
     
     handleClick = async () =>{
@@ -31,6 +32,11 @@ class Controls extends React.Component {
                 >
                     START
             </button>
+
+            <select onChange = {this.getOption}>
+                <option value = "djistikra">djistikra</option>
+                <option value = "star">A*</option>
+            </select>
             
             </div>
         );

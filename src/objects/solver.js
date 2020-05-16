@@ -13,7 +13,7 @@ class Node {
 
 class Solver {
 
-    constructor(boardState) {
+    constructor(boardState,type) {
         this.boardState = boardState
         this.moves = 0;
 
@@ -23,7 +23,7 @@ class Solver {
             drawLine: "drawline"
         }
 
-
+        this.type = type
         this.djBoard = this.convertToDjBoard(this.boardState)
         this.end = this.getEndingPoint(this.djBoard)
         this.starting = this.getStartingPoint(this.djBoard)
@@ -40,8 +40,6 @@ class Solver {
             this.state = this.states.done
             alert("must have an ending node")
         }
-
-        console.log(this.djBoard)
 
     }
 
@@ -91,6 +89,9 @@ class Solver {
     
             adjNodes.forEach((node) => {
                 let calcDist = this.currentNode.distance + 1
+                if(this.type === "star"){
+                    calcDist += this.distanceFromGoal(node)
+                }
                 if (calcDist < node.distance) {
                     node.distance = calcDist
                 }
@@ -110,6 +111,13 @@ class Solver {
             return this.boardState
 
         }
+    }
+
+    distanceFromGoal = (node) =>{
+        let xDist = this.starting.x - node.x
+        let yDist = this.starting.y - node.y 
+
+        return Math.pow(xDist,2) + Math.pow(yDist,2)
     }
 
     drawLine = () =>{

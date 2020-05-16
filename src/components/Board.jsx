@@ -11,7 +11,8 @@ class Board extends React.Component {
         super(props)
 
         this.state = {
-            bState: this.initBoardState()
+            bState: this.initBoardState(),
+            algoption: "djistikra"
         }
 
         this.solver = null;
@@ -68,7 +69,7 @@ class Board extends React.Component {
 
     startSolving = async ()=> {
 
-        this.solver = new Solver(this.state.bState)
+        this.solver = new Solver(this.state.bState,this.state.algoption)
         
 
             this.solving = setInterval(async() => {
@@ -89,6 +90,11 @@ class Board extends React.Component {
 
     }
 
+    getOption = (event)=>{
+        let algoption = event.target.options[event.target.selectedIndex].value
+        this.setState({algoption:algoption})
+    }
+
 
     render() {
         return (
@@ -97,6 +103,7 @@ class Board extends React.Component {
                     <Controls
                         reset={this.resetBoard}
                         solve={this.startSolving}
+                        getOption = {this.getOption}
                     /></div>
                 <div className="board">
 
