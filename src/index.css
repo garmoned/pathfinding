@@ -16,7 +16,8 @@ ul {
 }
 
 .board {
-  right: 1000px;
+  transform: translate(120px);
+  right: 10px;
   padding: 100px;
 }
 

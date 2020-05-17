@@ -89,8 +89,6 @@ class Board extends React.Component {
                 }
             }, 10);
    
-
-
     }
 
     getOption = (event)=>{
@@ -99,7 +97,8 @@ class Board extends React.Component {
     }
 
     generateMaze = () => {
-        var maze = mazegen(this.state.bState)
+        var mg = new mazegen(this.state.bState)
+        var maze = mg.generateMaze(this.state.bState)
         this.setState({bState:maze})
     }
 
