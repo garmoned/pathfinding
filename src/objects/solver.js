@@ -1,5 +1,5 @@
 
-const djEnums = Object.freeze({ "wall": -2, "unvisited": -1, "end": 0 })
+const djEnums = Object.freeze({"visited":-3, "wall": -2, "unvisited": -1, "end": 0 })
 
 
 class Node {
@@ -77,12 +77,8 @@ class Solver {
         if(this.state === this.states.working){
 
             if (this.currentNode.x === this.end.x && this.currentNode.y === this.end.y) {
-                
-
                 this.state = this.states.drawLine
-
                 this.currentNode = this.end
-
             }
     
             let adjNodes = this.getAdjacentNodes(this.currentNode,this.djBoard)
@@ -107,7 +103,8 @@ class Solver {
             this.boardState[this.currentNode.x][this.currentNode.y] = 5
         
             this.currentNode = this.selectNextNode(this.djBoard)
-    
+            
+
             return this.boardState
 
         }
@@ -146,7 +143,7 @@ class Solver {
 
     selectNextNode(djBoard) {
 
-        let smallest = djBoard[0][0]
+        let smallest = new Node(Infinity,djEnums.unvisited,-1,-1)
 
         for (let x = 0; x < djBoard[0].length; x++) {
             for (let y = 0; y < djBoard[0].length; y++) {

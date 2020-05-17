@@ -14,14 +14,14 @@ class mazegen {
     generateMaze = (boardState) => {
 
         var newBoard = this.fillWithWalls(boardState)
-        newBoard = this.drawMainPath(newBoard)
+        newBoard = this.drawMainPath(newBoard,.5,10)
 
         return newBoard
     
     }
     
 
-    drawMainPath = (boardState,branchChance = .2) => {
+    drawMainPath = (boardState,branchChance = .5,branchLength = 10) => {
       
         var start = new Point(Math.floor(Math.random()*boardState[0].length),0)
 
@@ -60,7 +60,7 @@ class mazegen {
 
     }
     
-    createBranch(currentPoint,boardState,length = 30){
+    createBranch(currentPoint,boardState,length = 40){
 
         var i = 0
 
