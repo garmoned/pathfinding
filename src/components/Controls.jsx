@@ -8,6 +8,7 @@ class Controls extends React.Component {
         this.reset = props.reset.bind(this)
         this.solve = props.solve.bind(this)
         this.getOption = props.getOption.bind(this)
+        this.generateMaze = props.generateMaze.bind(this)
     }
     
     handleClick = async () =>{
@@ -18,6 +19,8 @@ class Controls extends React.Component {
     startSolving = async () =>{
         await this.solve();
     }
+
+    
 
     render() {
         return (
@@ -31,6 +34,12 @@ class Controls extends React.Component {
                     onClick={this.startSolving}
                 >
                     START
+            </button>
+
+            <button 
+                    onClick={this.generateMaze}
+                >
+                    GenerateMaze
             </button>
 
             <select onChange = {this.getOption}>

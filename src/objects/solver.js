@@ -114,10 +114,10 @@ class Solver {
     }
 
     distanceFromGoal = (node) =>{
-        let xDist = this.starting.x - node.x
-        let yDist = this.starting.y - node.y 
+        let xDist = this.end.x - node.x
+        let yDist = this.end.y - node.y 
 
-        return Math.pow(xDist,2) + Math.pow(yDist,2)
+        return Math.pow(Math.pow(xDist,2) + Math.pow(yDist,2),.5)
     }
 
     drawLine = () =>{

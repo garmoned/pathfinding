@@ -2,6 +2,7 @@ import Square from './Square'
 import React from 'react'
 import Controls from './Controls'
 import Solver from '../objects/solver'
+import mazegen from '../objects/mazegen'
 
 class Board extends React.Component {
 
@@ -50,6 +51,8 @@ class Board extends React.Component {
         await this.setState({ bState: newBoardState })
     }
 
+
+
     resetBoard = async () => {
         clearInterval(this.solving)
         this.solver = null
@@ -95,6 +98,11 @@ class Board extends React.Component {
         this.setState({algoption:algoption})
     }
 
+    generateMaze = () => {
+        var maze = mazegen(this.state.bState)
+        this.setState({bState:maze})
+    }
+
 
     render() {
         return (
@@ -104,6 +112,7 @@ class Board extends React.Component {
                         reset={this.resetBoard}
                         solve={this.startSolving}
                         getOption = {this.getOption}
+                        generateMaze = {this.generateMaze}
                     /></div>
                 <div className="board">
 
