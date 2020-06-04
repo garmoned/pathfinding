@@ -7,8 +7,9 @@ class Controls extends React.Component {
 
         this.reset = props.reset.bind(this)
         this.solve = props.solve.bind(this)
-        this.getOption = props.getOption.bind(this)
+  
         this.generateMaze = props.generateMaze.bind(this)
+        this.getHval = props.getHval.bind(this)
     }
     
     handleClick = async () =>{
@@ -41,11 +42,12 @@ class Controls extends React.Component {
                 >
                     GenerateMaze
             </button>
-
-            <select onChange = {this.getOption}>
-                <option value = "djistikra">djistikra</option>
-                <option value = "star">A*</option>
-            </select>
+            
+            <label for = "hvalue">
+                Heuristic
+            </label>
+            <input id = "hvalue" style={{width:100}} min = {0} onChange = {this.getHval} type = "number">
+            </input>
             
             </div>
         );

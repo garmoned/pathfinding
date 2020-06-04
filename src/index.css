@@ -16,6 +16,7 @@ ul {
 }
 
 .board {
+
   transform: translate(120px);
   right: 10px;
   padding: 100px;
@@ -28,6 +29,7 @@ ul {
 }
 
 .game {
+  size: 100;
   display: block;
   text-align: center;
 }
@@ -37,6 +39,9 @@ ul {
 }
 
 .square {
+  margin : 0 auto;
+  width: 1%;
+  height: 1%;
   background: #9999;
   border: 1px solid #999;
   float: left;
@@ -48,8 +53,6 @@ ul {
   padding: 0;
   text-align: center;
   color: rgb(0, 255, 0);
-  height: 25px;
-  width: 25px;
 }
 
 .super-board-row {

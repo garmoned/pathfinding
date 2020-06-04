@@ -13,7 +13,7 @@ class Node {
 
 class Solver {
 
-    constructor(boardState,type) {
+    constructor(boardState,heuristic) {
         this.boardState = boardState
         this.moves = 0;
 
@@ -22,8 +22,8 @@ class Solver {
             done: "done",
             drawLine: "drawline"
         }
-
-        this.type = type
+        console.log(heuristic)
+        this.heuristic = heuristic
         this.djBoard = this.convertToDjBoard(this.boardState)
         this.end = this.getEndingPoint(this.djBoard)
         this.starting = this.getStartingPoint(this.djBoard)
@@ -46,14 +46,8 @@ class Solver {
 
 
     getNextBoardState() {
-
-        
         var newBoard = this.djSolve();
-
-
-
         return newBoard
-
     }
 
 
@@ -85,9 +79,7 @@ class Solver {
     
             adjNodes.forEach((node) => {
                 let calcDist = this.currentNode.distance + 1
-                if(this.type === "star"){
-                    calcDist += this.distanceFromGoal(node)
-                }
+                    calcDist += this.distanceFromGoal(node) * this.heuristic
                 if (calcDist < node.distance) {
                     node.distance = calcDist
                 }

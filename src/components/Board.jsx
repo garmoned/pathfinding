@@ -13,7 +13,8 @@ class Board extends React.Component {
 
         this.state = {
             bState: this.initBoardState(),
-            algoption: "djistikra"
+            algoption: "djistikra",
+            hval : 0
         }
 
         this.solver = null;
@@ -51,7 +52,8 @@ class Board extends React.Component {
         await this.setState({ bState: newBoardState })
     }
 
-
+    
+   	 	
 
     resetBoard = async () => {
         clearInterval(this.solving)
@@ -72,7 +74,7 @@ class Board extends React.Component {
 
     startSolving = async ()=> {
 
-        this.solver = new Solver(this.state.bState,this.state.algoption)
+        this.solver = new Solver(this.state.bState,this.state.hval)
         
 
             this.solving = setInterval(async() => {
@@ -102,6 +104,10 @@ class Board extends React.Component {
         this.setState({bState:maze})
     }
 
+    getHvalue = (event) =>{
+        let hval = event.target.value;
+        this.setState({hval:hval})
+    }
 
     render() {
         return (
@@ -112,6 +118,7 @@ class Board extends React.Component {
                         solve={this.startSolving}
                         getOption = {this.getOption}
                         generateMaze = {this.generateMaze}
+                        getHval = {this.getHvalue}
                     /></div>
                 <div className="board">
 
