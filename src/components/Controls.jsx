@@ -46,7 +46,7 @@ class Controls extends React.Component {
             <label for = "hvalue">
                 Heuristic
             </label>
-            <input id = "hvalue" style={{width:100}} min = {0} onChange = {this.getHval} type = "number">
+            <input id = "hvalue" style={{width:100}} onChange = {this.getHval} type = "number">
             </input>
             
             </div>
